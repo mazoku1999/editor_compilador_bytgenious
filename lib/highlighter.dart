@@ -77,13 +77,21 @@ class Highlighter {
   /// Formats the given [code] and returns a [TextSpan] with syntax
   /// highlighting.
   TextSpan highlight(String code) {
+    List<String> palabras = [
+      'void',
+      'main',
+      ';',
+    ];
+
+    // Resaltar el codigo basado en palabras clave del array palabras, si no se encuentra en el array se resalta con el estilo por defecto
     var spans = SpanParser.parse(_grammar, code);
-    var textSpans = <InlineSpan>[];
+    var textSpans = <TextSpan>[];
+
     var bracketCounter = 0;
-    int cont = 0;
+    var lines = code.split('\n');
     int charPos = 0;
+
     for (var span in spans) {
-      // Add any text before the span.
       if (span.start > charPos) {
         var text = code.substring(charPos, span.start);
         TextSpan? textSpan;
@@ -91,40 +99,27 @@ class Highlighter {
         textSpans.add(
           textSpan,
         );
-
         charPos = span.start;
       }
-      cont++;
-      // Add the span.
       var segment = code.substring(span.start, span.end);
       var style = theme._getStyle(span.scopes);
-      if (cont == 10) {
-        textSpans.add(
-          WidgetSpan(
-            child: Container(
-              width: 100,
-              height: 30,
-              color: Colors.black,
-              child: TextField(
-                // controller: _controllerTextFields,
-                style: style,
-              ),
-            ),
-          ),
-        );
-      } else {
-        textSpans.add(
-          TextSpan(
-            text: segment,
-            style: style,
-          ),
+      // print('segment: $segment');
+      // print('style: $style');
+      if (palabras.contains(segment)) {
+        style = TextStyle(
+          color: Colors.red,
+          fontWeight: FontWeight.bold,
         );
       }
-
+      textSpans.add(
+        TextSpan(
+          text: segment,
+          style: style,
+        ),
+      );
       charPos = span.end;
     }
 
-    // Add any text after the last span.
     if (charPos < code.length) {
       var text = code.substring(charPos, code.length);
       TextSpan? textSpan;
@@ -133,20 +128,28 @@ class Highlighter {
         textSpan,
       );
     }
-    // print('hola');
+
+    // print(textSpans);
     return TextSpan(children: textSpans, style: theme._wrapper);
   }
 
   (TextSpan, int) _formatBrackets(String text, int bracketCounter) {
+    int cont = 0;
+    // print('text: $text');
+    // print('bracketCounter: $bracketCounter');
     var spans = <TextSpan>[];
     var plainText = '';
+    print(text.characters);
     for (var char in text.characters) {
+      cont++;
+      // print(char);
+      // print(cont);
       if (_isStartingBracket(char)) {
         if (plainText.isNotEmpty) {
           spans.add(TextSpan(text: plainText));
           plainText = '';
         }
-
+        // print('char: $char');
         spans.add(TextSpan(
           text: char,
           style: _getBracketStyle(bracketCounter),
@@ -180,10 +183,16 @@ class Highlighter {
     }
   }
 
+  int conta = 0;
   TextStyle _getBracketStyle(int bracketCounter) {
     if (bracketCounter < 0) {
       return _failedBracketStyle;
     }
+    conta++;
+    // print('Numeo $conta: bracketCounter: $bracketCounter');
+    // if (bracketCounter == 0) {
+    //   return TextStyle(color: Colors.white);
+    // }
     return _bracketStyles[bracketCounter % _bracketStyles.length];
   }
 
