@@ -4,7 +4,7 @@ import 'package:copiando_package_codigo/span_parser.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // import 'textspan_controller.dart';
 // import 'package:copiando_package_codigo/grammars/';
@@ -18,7 +18,8 @@ const _bracketStyles = <TextStyle>[
   TextStyle(color: Color(0xFFabb2c0)),
 ];
 
-const _failedBracketStyle = TextStyle(color: Color(0xFFff0000));
+// const _failedBracketStyle = TextStyle(color: Color(0xFFff0000));
+const _failedBracketStyle = TextStyle(color: Color(0xFF5caeef));
 
 const _defaultLightThemeFiles = [
   'lib/themes/light_vs.json',
@@ -76,22 +77,65 @@ class Highlighter {
 
   /// Formats the given [code] and returns a [TextSpan] with syntax
   /// highlighting.
-  TextSpan highlight(String code) {
-    List<String> palabras = [
-      'void',
-      'main',
-      ';',
+  TextSpan obtenerPosiciones(String code) {
+    var textSpans = <InlineSpan>[];
+
+    int indiceInicial = 0;
+
+    List<Palabra> palabras = [
+      // Palabra(0, 3),
+      // Palabra(5, 8),
+      // Palabra(21, 24),
     ];
+    for (var palabra in palabras) {
+      // Añadir texto normal antes de la palabra
+      textSpans.add(
+        highlight(code.substring(indiceInicial, palabra.inicio)),
+      );
 
-    // Resaltar el codigo basado en palabras clave del array palabras, si no se encuentra en el array se resalta con el estilo por defecto
+      textSpans.add(
+        WidgetSpan(
+          child: IntrinsicWidth(
+            child: TextField(
+              textAlign: TextAlign.center,
+              controller: TextEditingController(
+                text: code.substring(palabra.inicio, palabra.fin + 1),
+              ),
+              style: TextStyle(color: Colors.white, fontSize: 16),
+              decoration: InputDecoration(
+                // contentPadding: EdgeInsets.only(left: 10, right: 10),
+                // isCollapsed: true,
+                // isDense: true,
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      // textSpans.add(TextSpan(
+      //   text: code.substring(palabra.inicio, palabra.fin + 1),
+      //   style: TextStyle(color: Colors.blue),
+      // ));
+      indiceInicial = palabra.fin + 1;
+    }
+    textSpans.add(
+      highlight(
+        code.substring(indiceInicial),
+      ),
+    );
+
+    return TextSpan(children: textSpans, style: theme._wrapper);
+  }
+
+  TextSpan highlight(String code) {
     var spans = SpanParser.parse(_grammar, code);
-    var textSpans = <TextSpan>[];
-
+    var textSpans = <InlineSpan>[];
     var bracketCounter = 0;
-    var lines = code.split('\n');
-    int charPos = 0;
 
+    int charPos = 0;
     for (var span in spans) {
+      // Add any text before the span.
       if (span.start > charPos) {
         var text = code.substring(charPos, span.start);
         TextSpan? textSpan;
@@ -99,27 +143,25 @@ class Highlighter {
         textSpans.add(
           textSpan,
         );
+
         charPos = span.start;
       }
+
+      // Add the span.
       var segment = code.substring(span.start, span.end);
       var style = theme._getStyle(span.scopes);
-      // print('segment: $segment');
-      // print('style: $style');
-      if (palabras.contains(segment)) {
-        style = TextStyle(
-          color: Colors.red,
-          fontWeight: FontWeight.bold,
-        );
-      }
+
       textSpans.add(
         TextSpan(
           text: segment,
           style: style,
         ),
       );
+
       charPos = span.end;
     }
 
+    // Add any text after the last span.
     if (charPos < code.length) {
       var text = code.substring(charPos, code.length);
       TextSpan? textSpan;
@@ -128,28 +170,26 @@ class Highlighter {
         textSpan,
       );
     }
-
-    // print(textSpans);
-    return TextSpan(children: textSpans, style: theme._wrapper);
+    // print('hola');
+    return TextSpan(
+      children: textSpans,
+      style: GoogleFonts.jetBrainsMono(
+        fontSize: 16,
+        height: 1.3,
+      ),
+    );
   }
 
   (TextSpan, int) _formatBrackets(String text, int bracketCounter) {
-    int cont = 0;
-    // print('text: $text');
-    // print('bracketCounter: $bracketCounter');
     var spans = <TextSpan>[];
     var plainText = '';
-    print(text.characters);
     for (var char in text.characters) {
-      cont++;
-      // print(char);
-      // print(cont);
       if (_isStartingBracket(char)) {
         if (plainText.isNotEmpty) {
           spans.add(TextSpan(text: plainText));
           plainText = '';
         }
-        // print('char: $char');
+
         spans.add(TextSpan(
           text: char,
           style: _getBracketStyle(bracketCounter),
@@ -183,16 +223,10 @@ class Highlighter {
     }
   }
 
-  int conta = 0;
   TextStyle _getBracketStyle(int bracketCounter) {
     if (bracketCounter < 0) {
       return _failedBracketStyle;
     }
-    conta++;
-    // print('Numeo $conta: bracketCounter: $bracketCounter');
-    // if (bracketCounter == 0) {
-    //   return TextStyle(color: Colors.white);
-    // }
     return _bracketStyles[bracketCounter % _bracketStyles.length];
   }
 
@@ -362,4 +396,11 @@ class HighlighterTheme {
     }
     return fallbacks.reversed.toList();
   }
+}
+
+class Palabra {
+  int inicio;
+  int fin;
+
+  Palabra(this.inicio, this.fin);
 }

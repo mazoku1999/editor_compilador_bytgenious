@@ -1,0 +1,40 @@
+{
+    "palabras": [
+        {
+            "correct": true,
+            "endIndex": 4,
+            "length": 4,
+            "startIndex": 0,
+            "line": 0,
+            "startPos": 0,
+            "value": "Hola"
+        },
+        {
+            "correct": true,
+            "endIndex": 11,
+            "length": 7,
+            "startIndex": 8,
+            "line": 0,
+            "startPos": 8,
+            "value": "nombre"
+        },
+        {
+            "correct": true,
+            "endIndex": 18,
+            "length": 4,
+            "startIndex": 15,
+            "line": 0,
+            "startPos": 15,
+            "value": "Juan"
+        },
+        {
+            "correct": true,
+            "endIndex": 29,
+            "length": 2,
+            "startIndex": 27,
+            "line": 0,
+            "startPos": 27,
+            "value": "20"
+        }
+    ]
+}

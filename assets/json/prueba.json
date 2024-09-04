@@ -1,0 +1,727 @@
+{
+    "abTests": {
+        "demo-ab-test": "original",
+        "experiment-new-onboarding": "original_current_onboarding",
+        "experiment-audio-feedback": "original_no_audio",
+        "experiment-show-yearly-price-as-monthly-breakdown": "variant1_show_monthly_breakdown",
+        "experiment-move-project-to-section-start": "original_2_parts"
+    },
+    "pageProps": {
+        "_sentryTraceData": "899bea5efa914d2bbc7b184ee12b8d3d-b4b5326ac8a06cf9-0",
+        "_sentryBaggage": "sentry-environment=production,sentry-release=7507d591c50db906e99ee2da2e0ef3254315b7dc,sentry-public_key=e9c0bbb3142f4bcaa61d6e039a082567,sentry-trace_id=36dfed40bc46437d9ebbf941bf095bae",
+        "lessons": [
+            {
+                "type": "Interactive",
+                "id": 59647,
+                "index": 0,
+                "preInteractionModules": [
+                    {
+                        "type": "paragraph",
+                        "content": "When can we use `console.log()` to display the value of a variable?",
+                        "visibleIf": "always"
+                    }
+                ],
+                "interactionModule": {
+                    "type": "multipleChoice",
+                    "items": [
+                        {
+                            "correct": true,
+                            "value": 0,
+                            "text": "After we create the variable"
+                        },
+                        {
+                            "correct": false,
+                            "value": 1,
+                            "text": "Before we create the variable"
+                        },
+                        {
+                            "correct": false,
+                            "value": 2,
+                            "text": "Before or after we create the variable"
+                        }
+                    ],
+                    "isCode": false
+                },
+                "postInteractionModules": [
+                    {
+                        "type": "paragraph",
+                        "content": "We can only use `console.log()` to display the content of a variable after we create it.",
+                        "visibleIf": "wrong"
+                    }
+                ]
+            },
+            {
+                "type": "Interactive",
+                "id": 59648,
+                "index": 1,
+                "preInteractionModules": [
+                    {
+                        "type": "paragraph",
+                        "content": "Why is this not a string value?",
+                        "visibleIf": "always"
+                    },
+                    {
+                        "type": "codeNone",
+                        "files": [
+                            {
+                                "isInteractive": false,
+                                "name": "script.js",
+                                "content": "New York",
+                                "codeLanguage": "javascript"
+                            }
+                        ],
+                        "output": null
+                    }
+                ],
+                "interactionModule": {
+                    "type": "multipleChoice",
+                    "items": [
+                        {
+                            "id": 62039,
+                            "index": 11,
+                            "preInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "Which value isn't a string?",
+                                    "visibleIf": "always"
+                                }
+                            ],
+                            "interactionModule": {
+                                "type": "multipleChoice",
+                                "items": [
+                                    {
+                                        "correct": true,
+                                        "value": 0,
+                                        "text": "`true`"
+                                    },
+                                    {
+                                        "correct": false,
+                                        "value": 1,
+                                        "text": "`\"true\"`"
+                                    },
+                                    {
+                                        "correct": false,
+                                        "value": 2,
+                                        "text": "`\"wrong\"`"
+                                    }
+                                ],
+                                "isCode": false
+                            },
+                            "postInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "`true` is not a string.",
+                                    "visibleIf": "wrong"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Interactive",
+                            "id": 62073,
+                            "index": 12,
+                            "preInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "Can you make sure that `true` appears in the console?",
+                                    "visibleIf": "always"
+                                }
+                            ],
+                            "interactionModule": {
+                                "type": "codeFillTheGap",
+                                "files": [
+                                    {
+                                        "isInteractive": true,
+                                        "name": "script.js",
+                                        "content": "let loggedIn = false;\n\nconsole.log(\"Logged in:\");\nconsole.log(loggedIn);\n\nloggedIn = !false;\n\nconsole.log(\"Logged in:\");\nconsole.log(loggedIn);",
+                                        "codeLanguage": "javascript"
+                                    }
+                                ],
+                                "interactionOptions": [
+                                    {
+                                        "startIndex": 133,
+                                        "endIndex": 141,
+                                        "startLine": 8,
+                                        "startPos": 12,
+                                        "length": 8,
+                                        "value": "loggedIn",
+                                        "correct": true
+                                    }
+                                ],
+                                "wrongOptions": [
+                                    "!true",
+                                    "false"
+                                ],
+                                "output": "Logged in:\nfalse\nLogged in:\ntrue"
+                            },
+                            "postInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "Make sure to pick `loggedIn`.",
+                                    "visibleIf": "wrong"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Interactive",
+                            "id": 62224,
+                            "index": 13,
+                            "preInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "Use the special sign to negate the value.",
+                                    "visibleIf": "always"
+                                }
+                            ],
+                            "interactionModule": {
+                                "type": "codeFillTheGap",
+                                "files": [
+                                    {
+                                        "isInteractive": true,
+                                        "name": "script.js",
+                                        "content": "const isConnected = !true;\n",
+                                        "codeLanguage": "javascript"
+                                    }
+                                ],
+                                "interactionOptions": [
+                                    {
+                                        "startIndex": 20,
+                                        "endIndex": 21,
+                                        "startLine": 0,
+                                        "startPos": 20,
+                                        "length": 1,
+                                        "value": "!",
+                                        "correct": true
+                                    }
+                                ],
+                                "wrongOptions": [
+                                    "\"",
+                                    ";"
+                                ],
+                                "output": null
+                            },
+                            "postInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "Make sure to pick `!`.",
+                                    "visibleIf": "wrong"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Interactive",
+                            "id": 62076,
+                            "index": 14,
+                            "preInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "Can you pick the snippet that displays `true` in the console?",
+                                    "visibleIf": "always"
+                                }
+                            ],
+                            "interactionModule": {
+                                "type": "codeFillTheGap",
+                                "files": [
+                                    {
+                                        "isInteractive": true,
+                                        "name": "script.js",
+                                        "content": "const split = 15 / 5;\nconsole.log(split);\n\nconsole.log(\"Even split:\");\nconsole.log(true);\n",
+                                        "codeLanguage": "javascript"
+                                    }
+                                ],
+                                "interactionOptions": [
+                                    {
+                                        "startIndex": 83,
+                                        "endIndex": 87,
+                                        "startLine": 4,
+                                        "startPos": 12,
+                                        "length": 4,
+                                        "value": "true",
+                                        "correct": true
+                                    }
+                                ],
+                                "wrongOptions": [
+                                    "false"
+                                ],
+                                "output": "3\nEven split:\ntrue"
+                            },
+                            "postInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "Make sure to pick `true`.",
+                                    "visibleIf": "wrong"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Interactive",
+                            "id": 52434,
+                            "index": 15,
+                            "preInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "What's the result of using the `===` operator?",
+                                    "visibleIf": "always"
+                                }
+                            ],
+                            "interactionModule": {
+                                "type": "multipleChoice",
+                                "items": [
+                                    {
+                                        "correct": true,
+                                        "value": 0,
+                                        "text": "A value of either `true` or `false`"
+                                    },
+                                    {
+                                        "correct": false,
+                                        "value": 1,
+                                        "text": "A value of either `\"true\"` or `\"false\"`"
+                                    },
+                                    {
+                                        "correct": false,
+                                        "value": 2,
+                                        "text": "A numerical value"
+                                    }
+                                ],
+                                "isCode": false
+                            },
+                            "postInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "`true` or `false` are special values that aren't strings. No need for quotes.",
+                                    "visibleIf": "wrong"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Interactive",
+                            "id": 52437,
+                            "index": 16,
+                            "preInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "Check if `uploaded` equals the value `100`.",
+                                    "visibleIf": "always"
+                                }
+                            ],
+                            "interactionModule": {
+                                "type": "codeFillTheGap",
+                                "files": [
+                                    {
+                                        "isInteractive": true,
+                                        "name": "script.js",
+                                        "content": "const uploaded = 15;\nconsole.log(uploaded === 100);",
+                                        "codeLanguage": "javascript"
+                                    }
+                                ],
+                                "interactionOptions": [
+                                    {
+                                        "startIndex": 42,
+                                        "endIndex": 45,
+                                        "startLine": 1,
+                                        "startPos": 21,
+                                        "length": 3,
+                                        "value": "===",
+                                        "correct": true
+                                    },
+                                    {
+                                        "startIndex": 46,
+                                        "endIndex": 49,
+                                        "startLine": 1,
+                                        "startPos": 25,
+                                        "length": 3,
+                                        "value": "100",
+                                        "correct": true
+                                    }
+                                ],
+                                "wrongOptions": [
+                                    "var"
+                                ],
+                                "output": "false"
+                            },
+                            "postInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "Make sure to pick `===`, followed by `100`.",
+                                    "visibleIf": "wrong"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Interactive",
+                            "id": 52435,
+                            "index": 17,
+                            "preInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "What will this code display in the console?",
+                                    "visibleIf": "always"
+                                },
+                                {
+                                    "type": "codeNone",
+                                    "files": [
+                                        {
+                                            "isInteractive": false,
+                                            "name": "script.js",
+                                            "content": "console.log(906 === 9006);",
+                                            "codeLanguage": "javascript"
+                                        }
+                                    ],
+                                    "output": "false"
+                                }
+                            ],
+                            "interactionModule": {
+                                "type": "multipleChoice",
+                                "items": [
+                                    {
+                                        "correct": true,
+                                        "value": 0,
+                                        "text": "`false`"
+                                    },
+                                    {
+                                        "correct": false,
+                                        "value": 1,
+                                        "text": "`true`"
+                                    },
+                                    {
+                                        "correct": false,
+                                        "value": 2,
+                                        "text": "`9069006`"
+                                    }
+                                ],
+                                "isCode": false
+                            },
+                            "postInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "The result is `false`.",
+                                    "visibleIf": "wrong"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Interactive",
+                            "id": 52440,
+                            "index": 18,
+                            "preInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "Make the comparison result `true`.",
+                                    "visibleIf": "always"
+                                }
+                            ],
+                            "interactionModule": {
+                                "type": "codeFillTheGap",
+                                "files": [
+                                    {
+                                        "isInteractive": true,
+                                        "name": "script.js",
+                                        "content": "const newMessages = 3;\nconsole.log(newMessages !== 0);",
+                                        "codeLanguage": "javascript"
+                                    }
+                                ],
+                                "interactionOptions": [
+                                    {
+                                        "startIndex": 47,
+                                        "endIndex": 50,
+                                        "startLine": 1,
+                                        "startPos": 24,
+                                        "length": 3,
+                                        "value": "!==",
+                                        "correct": true
+                                    }
+                                ],
+                                "wrongOptions": [
+                                    "<"
+                                ],
+                                "output": "true"
+                            },
+                            "postInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "Make sure to pick `!==`.",
+                                    "visibleIf": "wrong"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Interactive",
+                            "id": 62277,
+                            "index": 19,
+                            "preInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "Check if the chosen number isn't equal to `0`.",
+                                    "visibleIf": "always"
+                                }
+                            ],
+                            "interactionModule": {
+                                "type": "codeFillTheGap",
+                                "files": [
+                                    {
+                                        "isInteractive": true,
+                                        "name": "script.js",
+                                        "content": "const chosenNumber = 3;\nconst notZero = chosenNumber !== 0;\nconsole.log(notZero);",
+                                        "codeLanguage": "javascript"
+                                    }
+                                ],
+                                "interactionOptions": [
+                                    {
+                                        "startIndex": 38,
+                                        "endIndex": 39,
+                                        "startLine": 1,
+                                        "startPos": 14,
+                                        "length": 1,
+                                        "value": "=",
+                                        "correct": true
+                                    },
+                                    {
+                                        "startIndex": 53,
+                                        "endIndex": 54,
+                                        "startLine": 1,
+                                        "startPos": 29,
+                                        "length": 1,
+                                        "value": "!",
+                                        "correct": true
+                                    },
+                                    {
+                                        "startIndex": 57,
+                                        "endIndex": 58,
+                                        "startLine": 1,
+                                        "startPos": 33,
+                                        "length": 1,
+                                        "value": "0",
+                                        "correct": true
+                                    }
+                                ],
+                                "wrongOptions": [
+                                    "=="
+                                ],
+                                "output": "true"
+                            },
+                            "postInteractionModules": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "Make sure to pick `=`, followed by `!`, and finally `0`.",
+                                    "visibleIf": "wrong"
+                                }
+                            ]
+                        }
+                    ],
+                    "tutorialTitle": "JavaScript Basics",
+                    "tutorialType": "practiceRequired",
+                    "nextTutorial": {
+                        "id": 910,
+                        "index": 0,
+                        "codeLanguage": "javascript",
+                        "descriptionContent": "Learn how to create variables in JavaScript.",
+                        "title": "Creating Variables ",
+                        "type": "course",
+                        "version": 34,
+                        "bannerIconUrl": "/icons/track-icons/tutorial-910-icon-banner.svg",
+                        "chapters": [
+                            {
+                                "id": 6905,
+                                "title": "Variable Names",
+                                "type": "practiceLevel1",
+                                "lessons": [
+                                    {
+                                        "id": 59774
+                                    },
+                                    {
+                                        "id": 59681
+                                    },
+                                    {
+                                        "id": 59680
+                                    },
+                                    {
+                                        "id": 59674
+                                    },
+                                    {
+                                        "id": 59682
+                                    },
+                                    {
+                                        "id": 59678
+                                    },
+                                    {
+                                        "id": 59687
+                                    },
+                                    {
+                                        "id": 59688
+                                    },
+                                    {
+                                        "id": 59689
+                                    },
+                                    {
+                                        "id": 59756
+                                    },
+                                    {
+                                        "id": 59757
+                                    },
+                                    {
+                                        "id": 59692
+                                    },
+                                    {
+                                        "id": 59693
+                                    },
+                                    {
+                                        "id": 59694
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 6906,
+                                "title": "Variable Values",
+                                "type": "practiceLevel1",
+                                "lessons": [
+                                    {
+                                        "id": 59673
+                                    },
+                                    {
+                                        "id": 59676
+                                    },
+                                    {
+                                        "id": 59675
+                                    },
+                                    {
+                                        "id": 59720
+                                    },
+                                    {
+                                        "id": 59714
+                                    },
+                                    {
+                                        "id": 59742
+                                    },
+                                    {
+                                        "id": 59772
+                                    },
+                                    {
+                                        "id": 59690
+                                    },
+                                    {
+                                        "id": 59743
+                                    },
+                                    {
+                                        "id": 59691
+                                    },
+                                    {
+                                        "id": 59745
+                                    },
+                                    {
+                                        "id": 59747
+                                    },
+                                    {
+                                        "id": 59746
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 12761,
+                                "title": "Let and Const Differences",
+                                "type": "practiceLevel1",
+                                "lessons": [
+                                    {
+                                        "id": 115685
+                                    },
+                                    {
+                                        "id": 115687
+                                    },
+                                    {
+                                        "id": 115781
+                                    },
+                                    {
+                                        "id": 115688
+                                    },
+                                    {
+                                        "id": 115782
+                                    },
+                                    {
+                                        "id": 115783
+                                    },
+                                    {
+                                        "id": 115906
+                                    },
+                                    {
+                                        "id": 115901
+                                    },
+                                    {
+                                        "id": 115902
+                                    },
+                                    {
+                                        "id": 115903
+                                    },
+                                    {
+                                        "id": 115907
+                                    },
+                                    {
+                                        "id": 115904
+                                    },
+                                    {
+                                        "id": 115905
+                                    },
+                                    {
+                                        "id": 115908
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 6911,
+                                "title": "Console",
+                                "type": "practiceLevel1",
+                                "lessons": [
+                                    {
+                                        "id": 59716
+                                    },
+                                    {
+                                        "id": 59715
+                                    },
+                                    {
+                                        "id": 59717
+                                    },
+                                    {
+                                        "id": 59718
+                                    },
+                                    {
+                                        "id": 59719
+                                    },
+                                    {
+                                        "id": 59710
+                                    },
+                                    {
+                                        "id": 59182
+                                    },
+                                    {
+                                        "id": 59181
+                                    },
+                                    {
+                                        "id": 59197
+                                    },
+                                    {
+                                        "id": 59211
+                                    },
+                                    {
+                                        "id": 59752
+                                    },
+                                    {
+                                        "id": 59753
+                                    },
+                                    {
+                                        "id": 59260
+                                    },
+                                    {
+                                        "id": 59259
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "chapterType": "practiceLevel2",
+                    "chaptersCount": 1,
+                    "currentChapterIndex": 0,
+                    "publishSetVersion": 669,
+                    "trackVersion": 30,
+                    "tutorialVersion": 2,
+                    "sectionIndex": 0,
+                    "codeLanguage": "javascript"
+                },
+                "__N_SSG": true
+            }

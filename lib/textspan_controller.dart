@@ -17,7 +17,8 @@ class TextSpanTextFieldController extends TextEditingController {
     required bool withComposing,
   }) {
     // cont++;
-    // print(cont);
+    print(dartDarkHighlighter.highlight(text).text);
+
     return dartDarkHighlighter.highlight(text);
   }
 }
